@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculate Birth Age</title>
+</head>
+<body>
+    <h1>Birth Age Calculator</h1>
+    <label for="birthdate">Enter your birthdate:</label>
+    <input type="date" id="birthdate">
+    <button onclick="calculateAge()">Calculate Age</button>
+    <p id="result"></p>
+</body>
+</html>
+<script>
+    function calculateAge() {
+        // Get the input value (birthdate) from the HTML input field
+        const birthdateInput = document.getElementById("birthdate").value;
+
+        // Create a new Date object from the entered birthdate
+        const birthdate = new Date(birthdateInput);
+
+        // Get the current date
+        const currentDate = new Date();
+
+        // Calculate the difference in milliseconds between the current date and birthdate
+        const ageInMilliseconds = currentDate - birthdate;
+
+        // Calculate the age in years by dividing the milliseconds by milliseconds in a year (365.25 days)
+        const ageInYears = ageInMilliseconds / (365.25 * 24 * 60 * 60 * 1000);
+
+        // Round the age to the nearest integer
+        const roundedAge = Math.floor(ageInYears);
+
+        // Display the calculated age on the webpage
+        const resultElement = document.getElementById("result");
+        resultElement.textContent = `Your age is ${roundedAge} years.`;
+    }
+</script>
